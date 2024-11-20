@@ -1,0 +1,13 @@
+{
+  "name": "recycled-rockets",
+  "version": "1.0.0",
+  "title": "Recycled Rockets",
+  "author": "orbital.sfear",
+  "factorio_version": "2.0",
+  "dependencies": [
+    "base >= 2.0.0",
+    "space-age >= 2.0.0"
+  ],
+  "description": "Adds 2 techs for new resuable rockets based on planets. Removes infinite cargo drops."
+}
+
