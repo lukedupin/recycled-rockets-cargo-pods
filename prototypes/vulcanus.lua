@@ -9,13 +9,13 @@ recycledRocketSiloPlaced.name = "recycled-rocket-silo"
 recycledRocketSiloPlaced.fixed_recipe = "recycled-rocket-ship"
 -- recycledRocketSiloPlaced.fixed_recipe = "" -- Wish this could work but it allows the original also, which breaks everything
 recycledRocketSiloPlaced.rocket_parts_required = 1 -- Needs to be one since the output doesn't honor anything other than 1
-recycledRocketSiloPlaced.icon = "__recycled-rockets__/graphics/rocket-silo-re-vulcanus.png"
+recycledRocketSiloPlaced.icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-re-vulcanus.png"
 
 -- Inventory item for the recycled rocket silo
 local recycledRocketSiloItem = {
 	type = "item",
 	name = "recycled-rocket-silo",
-	icon = "__recycled-rockets__/graphics/rocket-silo-re-vulcanus.png",
+	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-re-vulcanus.png",
 	subgroup = "space-related",
 	order = "a[rocket-silo]",
 	inventory_move_sound = space_age_item_sounds.mechanical_large_inventory_move,
@@ -34,7 +34,8 @@ local recycledRocketSiloRecipe = {
 	ingredients =
 	{
 	  {type = "item", name = "rocket-silo", amount = 1},
-	  {type = "item", name = "processing-unit", amount = 100},
+      {type = "item", name = 'thruster', amount = 10},
+	  {type = "item", name = "processing-unit", amount = 50},
 	  {type = "item", name = "low-density-structure", amount = 100},
 	  {type = "item", name = "tungsten-plate", amount = 100}
 	},
@@ -70,7 +71,7 @@ local recycledRocketRecipe = {
 local recycledRocketTech = {
 	type = "technology",
 	name = "recycled-rocket-ship",
-	icon = "__recycled-rockets__/graphics/rocket-silo-tech-vulcanus.png",
+	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-tech-vulcanus.png",
 	icon_size = 256,
 	essential = true,
 	effects =

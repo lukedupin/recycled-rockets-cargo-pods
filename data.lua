@@ -10,7 +10,7 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local recycledCargoPodItem = {
 	type = "item",
 	name = "recycled-cargo-pod",
-	icon = "__recycled-rockets__/graphics/cargo-pod.png",
+	icon = "__recycled-rockets-cargo-pods__/graphics/cargo-pod.png",
 	subgroup = "space-related",
 	order = "c[rocket-silo]",
 	inventory_move_sound = space_age_item_sounds.mechanical_large_inventory_move,
@@ -54,8 +54,9 @@ local rocketRecipe = {
     ingredients =
     {
       {type = "item", name = "recycled-cargo-pod", amount = 1},
-	  {type = "item", name = "processing-unit", amount = 90},
-      {type = "item", name = 'low-density-structure', amount = 90},
+      {type = "item", name = 'thruster', amount = 5},
+	  {type = "item", name = "processing-unit", amount = 50},
+      {type = "item", name = 'low-density-structure', amount = 100},
       {type = "item", name = 'rocket-fuel', amount = 100}
     },
 	results = {{type="item", name="rocket-part", amount=1}},
@@ -69,7 +70,7 @@ local rocketRecipe = {
 local recycledRocketTech = {
 	type = "technology",
 	name = "cargo-pod",
-	icon = "__recycled-rockets__/graphics/cargo-pod-tech.png",
+	icon = "__recycled-rockets-cargo-pods__/graphics/cargo-pod-tech.png",
 	icon_size = 256,
 	essential = true,
 	effects = {
