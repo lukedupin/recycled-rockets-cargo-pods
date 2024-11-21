@@ -87,19 +87,19 @@ end)
 function Public.handle_cargo_pod_arriving_on_platform(unit_number)
 	local pod = storage.recycle_cargo_pods[unit_number]
 	if not (pod and pod.arrival_surface_name) then
-		game.print("Platform: No arrival surface name")
+		--game.print("Platform: No arrival surface name")
 		return
 	end
 
 	local surface = game.surfaces[pod.arrival_surface_name]
 	if not (surface and surface.valid) then
-		game.print("Platform: No valid surface")
+		--game.print("Platform: No valid surface")
 		return
 	end
 
 	local platform = surface.platform
 	if not (platform and platform.valid) then
-		game.print("Platform: No valid platform")
+		--game.print("Platform: No valid platform")
 		return
 	end
 	if not (platform.space_location
@@ -107,19 +107,19 @@ function Public.handle_cargo_pod_arriving_on_platform(unit_number)
 			and platform.space_location
 			and platform.space_location.valid
 			and platform.space_location.name) then
-		game.print("Platform: No valid space location")
+		--game.print("Platform: No valid space location")
 		return
 	end
 
 	local hub = platform.hub
 	if not (hub and hub.valid) then
-		game.print("Platform: No valid hub")
+		--game.print("Platform: No valid hub")
 		return
 	end
 
 	local hub_inventory = hub.get_inventory(defines.inventory.hub_main)
 	if not (hub_inventory and hub_inventory.valid) then
-		game.print("Platform: No valid hub inventory")
+		--game.print("Platform: No valid hub inventory")
 		return
 	end
 
@@ -131,20 +131,20 @@ end
 function Public.handle_cargo_pod_arriving_on_planet(unit_number)
 	local pod = storage.recycle_cargo_pods[unit_number]
 	if not (pod and pod.arrival_surface_name) then
-		game.print("Planet: No arrival surface name")
+		--game.print("Planet: No arrival surface name")
 		return
 	end
 
 	local surface = game.surfaces[pod.arrival_surface_name]
 	if not (surface and surface.valid) then
-		game.print("Planet: No valid surface")
+		--game.print("Planet: No valid surface")
 		return
 	end
 
 	if not (surface.planet
 			and surface.planet.valid
 			and surface.planet.name) then
-		game.print("Planet: No valid planet")
+		--game.print("Planet: No valid planet")
 		return
 	end
 
@@ -154,12 +154,12 @@ function Public.handle_cargo_pod_arriving_on_planet(unit_number)
 		local landing_inventory = cargo_landing_pad.get_inventory(defines.inventory.hub_main)
 		if landing_inventory and landing_inventory.valid then
 			landing_inventory.insert({ name = "recycled-cargo-pod", count = 1 })	
-			game.print("Planet: Inserted cargo pod")
+			--game.print("Planet: Inserted cargo pod")
 			return
 		end
 	end
 
-	game.print("Planet: No valid cargo landing pad")
+	--game.print("Planet: No valid cargo landing pad")
 end
 
 function Public.handle_cargo_pod_departing_platform(pod, platform)
