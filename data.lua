@@ -41,6 +41,7 @@ local silo = table.deepcopy(data.raw["rocket-silo"]["rocket-silo"])
 silo.fixed_recipe = "basic-rocket-ship"
 silo.rocket_parts_required = 1 -- Needs to be one since the output doesn't honor anything other than 1
 
+
 -- Rocket Ship --
 
 -- Create a new recipe for the recycled rocket
@@ -64,8 +65,6 @@ local rocketRecipe = {
 }
 
 
-
-
 -- Create the technology for the recycled rocket
 local recycledRocketTech = {
 	type = "technology",
@@ -87,7 +86,7 @@ local recycledRocketTech = {
 	  "rocket-silo"
 	},
 	unit = {
-	  count = 250,
+	  count = 200,
 	  ingredients =
 	  {
 		{"automation-science-pack", 1},

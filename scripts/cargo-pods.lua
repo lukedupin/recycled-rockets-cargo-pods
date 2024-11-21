@@ -190,35 +190,53 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 
 	-- Attempt to find the cargo pod in the hub, and remove it.
 	local cargo_name = "recycled-cargo-pod"
-	local available_count = 0
 	for _, quality in pairs(Public.QUALITY_LEVELS) do
-		available_count = available_count + hub_inventory.get_item_count({ name = cargo_name, quality = quality })
-		if available_count > 0 then
+		if hub_inventory.get_item_count({ name = cargo_name, quality = quality }) > 0 then
 			storage.recycle_cargo_pods[pod.unit_number].platform = true
 			hub_inventory.remove({ name = cargo_name, count = 1, quality = quality })
-			break
+			return -- success state
 		end
 	end
 
 	-- If we didn't find any cargo pods, we should destroy the cargo pod and return the items
-	if available_count <= 0 then
-		local pod_contents = pod.get_inventory(defines.inventory.cargo_unit).get_contents()
-		for _, item in pairs(pod_contents) do
-			hub_inventory.insert( item)
-		end
-
-		-- Tell the user that the cargo pod was destroyed
-		for _, player in pairs(game.players) do
-			player.add_custom_alert(
-				hub, 
-      			{type = "item", name = "recycled-cargo-pod"},
-				{ "recycled-rocket.missing-cargo-pod", planet_name }, 
-				true)
-		end
-		--pod.force.print({ "recycled-rocket.missing-cargo-pod", planet_name, }, { color = warning_color })
-
-		pod.destroy()
+	local pod_inventory = pod.get_inventory(defines.inventory.cargo_unit)
+	if not (pod_inventory and pod_inventory.valid) then
+		--game.print("Couldn't get pod inventory")
+		return
 	end
+
+	local pod_contents = pod_inventory.get_contents()
+	if not (pod_contents and pod_contents.valid) then
+		--game.print("Couldn't get pod cotents")
+		return
+	end
+
+	-- If the user is dropping cargo pods, we want to remove 1 and use that as the cargo pod
+	for _, item in pairs(pod_contents) do
+		if item.name == "recycled-cargo-pod" then
+			pod_inventory.remove( item )
+			return -- success state
+		end
+	end
+
+	-- ERROR: We couldn't find the cargo pod in the pod's inventory, return the items to the hub
+
+	-- Insert the items back into the hub	
+	for _, item in pairs(pod_contents) do
+		hub_inventory.insert( item)
+	end
+
+	-- Tell the user that the cargo pod was destroyed
+	for _, player in pairs(game.players) do
+		player.add_custom_alert(
+			hub, 
+			{type = "item", name = "recycled-cargo-pod"},
+			{ "recycled-rocket.missing-cargo-pod", planet_name }, 
+			true)
+	end
+	--pod.force.print({ "recycled-rocket.missing-cargo-pod", planet_name, }, { color = warning_color })
+
+	pod.destroy()
 end
 
 function Public.handle_cargo_pod_departing_planet(pod)

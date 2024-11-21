@@ -50,7 +50,7 @@ local recycledRocketSiloRecipe = {
 local recycledRocketRecipe = {
 	type = "recipe",
 	name = "recycled-rocket-ship",
-	energy_required = 10,
+	energy_required = 40,
 	enabled = false,
 	hide_from_player_crafting = true,
 	category = "rocket-building",
@@ -73,7 +73,7 @@ local recycledRocketTech = {
 	name = "recycled-rocket-ship",
 	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-tech-vulcanus.png",
 	icon_size = 256,
-	essential = true,
+	essential = false,
 	effects =
 	{
 	  {

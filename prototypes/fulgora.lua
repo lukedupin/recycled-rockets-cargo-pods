@@ -34,10 +34,10 @@ local recycledRocketSiloRecipe = {
 	ingredients =
 	{
 	  {type = "item", name = "recycled-rocket-silo", amount = 1},
-	  {type = "item", name = "holmium-plate", amount = 100},
+	  {type = "item", name = "holmium-plate", amount = 50},
 	  {type = "item", name = "superconductor", amount = 50},
 	},
-	energy_required = 30,
+	energy_required = 45,
 	results = {{type="item", name="recycled-mag-rocket-silo", amount=1}},
 	requester_paste_multiplier = 1
 }
@@ -62,10 +62,11 @@ local recycledRocketRecipe = {
 }
 
 
--- Cargo Pod --
+-- Magnetic fuel --
 
 -- CargoPod item
 local recycledMagFuelItem = {
+	default_import_location = "fulgora",
 	type = "item",
 	name = "recycled-mag-fuel",
 	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-fuel.png",
@@ -89,8 +90,25 @@ local recycledMagFuelRecipe = {
     {
       {type = "item", name = "calcite", amount = 1},
 	  {type = "item", name = "superconductor", amount = 1},
-      {type = "item", name = 'rocket-fuel', amount = 80},
-      {type = "fluid", name = 'heavy-oil', amount = 2000},
+      {type = "item", name = 'rocket-fuel', amount = 42},
+    },
+	results = {{type="item", name="recycled-mag-fuel", amount=5}}
+}
+
+-- Create the recycled rocket pod
+local recycledMagHeavyFuelRecipe = {
+	type = "recipe",
+	name = "recycled-mag-heavy-fuel",
+	energy_required = 60,
+	enabled = false,
+	category = "electromagnetics",
+    ingredients =
+    {
+      {type = "item", name = "calcite", amount = 1},
+	  {type = "item", name = "holmium-plate", amount = 1},
+	  {type = "item", name = "copper-plate", amount = 1},
+      {type = "fluid", name = 'heavy-oil', amount = 2048},
+      {type = "fluid", name = 'water', amount = 10},
     },
 	results = {{type="item", name="recycled-mag-fuel", amount=5}}
 }
@@ -104,7 +122,7 @@ local recycledRocketTech = {
 	name = "recycled-mag-rocket-ship",
 	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-tech-fulgora.png",
 	icon_size = 256,
-	essential = true,
+	essential = false,
 	effects =
 	{
 	  {
@@ -142,6 +160,41 @@ local recycledRocketTech = {
 	}
 }
 
+-- Create the technology for the recycled rocket
+local recycledRocketHeavyFuel = {
+	type = "technology",
+	name = "recycled-mag-heavy-fuel",
+	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-heavy-fuel-tech.png",
+	icon_size = 256,
+	essential = false,
+	effects =
+	{
+	  {
+		type = "unlock-recipe",
+		recipe = "recycled-mag-heavy-fuel"
+	  }
+	},
+	prerequisites =
+	{
+	  "recycled-mag-rocket-ship"
+	},
+	unit =
+	{
+	  count = 500,
+
+	  ingredients =
+	  {
+		{"automation-science-pack", 1},
+		{"logistic-science-pack", 1},
+		{"chemical-science-pack", 1},
+		{"utility-science-pack", 1},
+	    {"electromagnetic-science-pack", 1},
+		{"space-science-pack", 1}
+	  },
+	  time = 60
+	}
+}
+
 data:extend({
 	recycledRocketSiloPlaced,
 	recycledRocketRecipe,
@@ -150,6 +203,8 @@ data:extend({
 
 	recycledMagFuelItem,
 	recycledMagFuelRecipe,
+	recycledMagHeavyFuelRecipe,
 
-	recycledRocketTech
+	recycledRocketTech,
+	recycledRocketHeavyFuel
 })
