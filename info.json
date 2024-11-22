@@ -1,6 +1,6 @@
 {
   "name": "recycled-rockets-cargo-pods",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "title": "Recycled Rockets and Cargo Pods",
   "author": "orbital.sfear",
   "factorio_version": "2.0",
@@ -8,6 +8,6 @@
     "base >= 2.0.0",
     "space-age >= 2.0.0"
   ],
-  "description": "Adds 2 techs for new resuable rockets based on planets. Removes infinite cargo drops. Cargo pods are reusable."
+  "description": "CargoDrop items, recycled rockets and 4 new techs tree unlockables. Removes infinite cargo drops. Cargo pods are reusable."
 }
 

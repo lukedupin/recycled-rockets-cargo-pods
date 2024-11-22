@@ -207,10 +207,12 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 		return
 	end
 
-	for _, quality in pairs(Public.QUALITY_LEVELS) do
-		if pod_inventory.get_item_count({ name = cargo_name, quality = quality }) > 0 then
+	-- If the user is dropping cargo pods, we want to remove 1 and use that as the cargo pod
+	local pod_contents = pod_inventory.get_contents()
+	for _, item in pairs(pod_contents) do
+		if item.name == cargo_name and item.quantity > 1 then
 			--game.print("Reducing stack size to send full stack")
-			pod_inventory.remove({ name = cargo_name, count = 1, quality = quality })
+			pod_inventory.remove( item )
 			return -- success state
 		end
 	end
@@ -218,9 +220,9 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	-- ERROR: We couldn't find the cargo pod in the pod's inventory, return the items to the hub
 
 	-- Insert the items back into the hub	
-	--for _, item in pairs(pod_contents) do
-	--hub_inventory.insert( item)
-	--nd
+	for _, item in pairs(pod_contents) do
+		hub_inventory.insert( item)
+	end
 
 	-- Tell the user that the cargo pod was destroyed
 	for _, player in pairs(game.players) do
@@ -232,7 +234,6 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	end
 	--pod.force.print({ "recycled-rocket.missing-cargo-pod", planet_name, }, { color = warning_color })
 
-	-- This will return everything to the hub
 	pod.destroy()
 end
 
