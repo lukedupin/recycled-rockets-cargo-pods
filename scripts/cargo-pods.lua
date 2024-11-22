@@ -198,23 +198,19 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 		end
 	end
 
+	--game.print("Attempting to send cargo without a cargo pod")
+
 	-- If we didn't find any cargo pods, we should destroy the cargo pod and return the items
-	local pod_inventory = pod.get_inventory(defines.inventory.cargo_unit)
+	local pod_inventory = pod.get_inventory(defines.inventory.chest)
 	if not (pod_inventory and pod_inventory.valid) then
 		--game.print("Couldn't get pod inventory")
 		return
 	end
 
-	local pod_contents = pod_inventory.get_contents()
-	if not (pod_contents and pod_contents.valid) then
-		--game.print("Couldn't get pod cotents")
-		return
-	end
-
-	-- If the user is dropping cargo pods, we want to remove 1 and use that as the cargo pod
-	for _, item in pairs(pod_contents) do
-		if item.name == "recycled-cargo-pod" then
-			pod_inventory.remove( item )
+	for _, quality in pairs(Public.QUALITY_LEVELS) do
+		if pod_inventory.get_item_count({ name = cargo_name, quality = quality }) > 0 then
+			--game.print("Reducing stack size to send full stack")
+			pod_inventory.remove({ name = cargo_name, count = 1, quality = quality })
 			return -- success state
 		end
 	end
@@ -222,9 +218,9 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	-- ERROR: We couldn't find the cargo pod in the pod's inventory, return the items to the hub
 
 	-- Insert the items back into the hub	
-	for _, item in pairs(pod_contents) do
-		hub_inventory.insert( item)
-	end
+	--for _, item in pairs(pod_contents) do
+	--hub_inventory.insert( item)
+	--nd
 
 	-- Tell the user that the cargo pod was destroyed
 	for _, player in pairs(game.players) do
@@ -236,6 +232,7 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	end
 	--pod.force.print({ "recycled-rocket.missing-cargo-pod", planet_name, }, { color = warning_color })
 
+	-- This will return everything to the hub
 	pod.destroy()
 end
 
