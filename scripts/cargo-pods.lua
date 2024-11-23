@@ -210,7 +210,8 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	-- If the user is dropping cargo pods, we want to remove 1 and use that as the cargo pod
 	local pod_contents = pod_inventory.get_contents()
 	for _, item in pairs(pod_contents) do
-		if item.name == cargo_name and item.quantity > 1 then
+		-- Added these extra checks to fix a bug that can crop up when blasting drops
+		if item and item.quantity and item.name == cargo_name and item.quantity > 1 then
 			--game.print("Reducing stack size to send full stack")
 			pod_inventory.remove( item )
 			return -- success state
