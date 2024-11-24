@@ -64,6 +64,39 @@ local rocketRecipe = {
 	allow_productivity = true
 }
 
+-- Fix soft lock of thrusters not being craftable
+local sptTech = table.deepcopy(data.raw["technology"]["space-platform-thruster"])
+sptTech.effects = {
+	-- Remove the thruster, it now appears in the drop pod
+	{
+		type = "unlock-recipe",
+		recipe = "ice-melting"
+	},
+	{
+		type = "unlock-recipe",
+		recipe = "thruster-fuel"
+	},
+	{
+		type = "unlock-recipe",
+		recipe = "thruster-oxidizer"
+	}
+}
+
+-- Bug to fix the initial creation of a space platform not having a cargo pod
+local spspItem = table.deepcopy(data.raw["space-platform-starter-pack"]["space-platform-starter-pack"])
+spspItem.initial_items = {
+	{
+		amount = 10,
+		name = "space-platform-foundation",
+		type = "item"
+	},
+	{
+		amount = 1,
+		name = "recycled-cargo-pod",
+		type = "item"
+	}
+}
+
 
 -- Create the technology for the recycled rocket
 local recycledRocketTech = {
@@ -76,6 +109,10 @@ local recycledRocketTech = {
 	  {
 		type = "unlock-recipe",
 		recipe = "basic-rocket-ship"
+	  },
+	  {
+		type = "unlock-recipe",
+		recipe = "thruster"
 	  },
 	  {
 		type = "unlock-recipe",
@@ -103,6 +140,10 @@ data.extend({
     recycledCargoPodRecipe,
 
     rocketRecipe,
-    recycledRocketTech
+    recycledRocketTech,
+
+	-- Fix soft lock of thrusters not being craftable
+	sptTech,
+	spspItem
 })
 
