@@ -25,6 +25,7 @@ script.on_nth_tick(60, function()
 					platform = false, 
 					arriving = false, 
 					departure_surface_name = surface_name,
+					departure_last_position = pod.position,
 					arrival_surface_name = nil
 				}
 			end
@@ -40,8 +41,7 @@ script.on_nth_tick(60, function()
 				if seen_on.planet then
 					storage.recycle_cargo_pods[pod.unit_number].arriving = true
 					storage.recycle_cargo_pods[pod.unit_number].arrival_surface_name = surface_name
-					-- if pod.procession_tick > 60 * 12 or pod.procession_tick < 60 * 5.5 then break end
-					--Public.handle_cargo_pod_arriving_on_platform(pod, platform)
+					-- We now handle arriving by checking for when the pod disappaers, IE its inside the space station
 				else
 					Public.handle_cargo_pod_departing_platform(pod, platform)
 				end
@@ -53,6 +53,7 @@ script.on_nth_tick(60, function()
 					storage.recycle_cargo_pods[pod.unit_number].arrival_surface_name = surface_name
 					--if pod.procession_tick > 60 * 14 or pod.procession_tick < 60 * 5.5 then break end
 					--Public.handle_cargo_pod_arriving_on_planet(pod)
+					--game.print("Planet: Cargo pod arriving on planet"..pod.spawned_container)
 				else
 					Public.handle_cargo_pod_departing_planet(pod)
 				end
@@ -121,6 +122,28 @@ function Public.handle_cargo_pod_arriving_on_platform(unit_number)
 	if not (hub_inventory and hub_inventory.valid) then
 		--game.print("Platform: No valid hub inventory")
 		return
+	end
+
+	-- Create the ascent rocket re-entering the atmosphere
+	local reentry_surface = game.surfaces[pod.departure_surface_name]
+	if reentry_surface and reentry_surface.valid then
+		local cargo_landing_pads = reentry_surface.find_entities_filtered({ name = "cargo-landing-pad" })
+		if cargo_landing_pads and #cargo_landing_pads > 0 then
+			game.print("Platform: Creating landing rocket")
+			--local rocket = reentry_surface.create_entity({
+			local rocket = platform.surface.create_entity({
+				name='cargo-pod', 
+				position=pod.departure_last_position,
+				procession_tick=1,
+				--target=cargo_landing_pads[1],
+				--cause=platform,
+				--force='neutral'
+				spawned_container = hub.unit_number
+			})
+			rocket.force_finish_ascending()
+			rocket.force_finish_descending()
+			rocket.procession_tick = 1
+		end
 	end
 
 	-- Attempt to find the hub, and insert ourselves into it.
@@ -240,6 +263,7 @@ end
 
 function Public.handle_cargo_pod_departing_planet(pod)
 	-- Marks that we are ascending
+	storage.recycle_cargo_pods[pod.unit_number].departure_last_position = pod.position
 	storage.recycle_cargo_pods[pod.unit_number].planet = true
 end
 
