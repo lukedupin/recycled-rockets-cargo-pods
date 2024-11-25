@@ -201,19 +201,18 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	--game.print("Attempting to send cargo without a cargo pod")
 
 	-- If we didn't find any cargo pods, we should destroy the cargo pod and return the items
-	local pod_inventory = pod.get_inventory(defines.inventory.chest)
+	local pod_inventory = pod.get_inventory(defines.inventory.cargo_wagon)
 	if not (pod_inventory and pod_inventory.valid) then
 		--game.print("Couldn't get pod inventory")
 		return
 	end
 
 	-- If the user is dropping cargo pods, we want to remove 1 and use that as the cargo pod
-	local pod_contents = pod_inventory.get_contents()
-	for _, item in pairs(pod_contents) do
-		-- Added these extra checks to fix a bug that can crop up when blasting drops
-		if item and item.quantity and item.name == cargo_name and item.quantity > 1 then
+	for _, quality in pairs(Public.QUALITY_LEVELS) do
+		if pod_inventory.get_item_count({ name = cargo_name, quality = quality }) > 0 then
 			--game.print("Reducing stack size to send full stack")
-			pod_inventory.remove( item )
+			storage.recycle_cargo_pods[pod.unit_number].platform = true
+			pod_inventory.remove({ name = cargo_name, count = 1, quality = quality })
 			return -- success state
 		end
 	end
