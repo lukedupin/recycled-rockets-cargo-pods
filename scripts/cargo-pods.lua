@@ -220,8 +220,11 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	-- ERROR: We couldn't find the cargo pod in the pod's inventory, return the items to the hub
 
 	-- Insert the items back into the hub	
-	for _, item in pairs(pod_contents) do
-		hub_inventory.insert( item)
+	local pod_contents = pod_inventory.get_contents()
+	if pod_contents then
+		for _, item in pairs(pod_contents) do
+			hub_inventory.insert( item)
+		end
 	end
 
 	-- Tell the user that the cargo pod was destroyed
