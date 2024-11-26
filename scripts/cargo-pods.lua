@@ -222,6 +222,7 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	-- Insert the items back into the hub	
 	local pod_contents = pod_inventory.get_contents()
 	if pod_contents then
+		--game.print("Returning cargo pod items to hub")
 		for _, item in pairs(pod_contents) do
 			hub_inventory.insert( item)
 		end
@@ -237,6 +238,7 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	end
 	--pod.force.print({ "recycled-rocket.missing-cargo-pod", planet_name, }, { color = warning_color })
 
+	--game.print("Destroying cargo pod that doesn't actually exist")
 	pod.destroy()
 end
 
