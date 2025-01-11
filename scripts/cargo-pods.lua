@@ -1,11 +1,26 @@
 local Public = {}
 
 local warning_color = { r = 255, g = 60, b = 60 }
+local has_researched_cargo_pod = false
 Public.QUALITY_LEVELS = { "normal", "uncommon", "rare", "epic", "legendary" }
 
 script.on_nth_tick(60, function()
+	if not has_researched_cargo_pod then
+		for _, player in pairs(game.players) do
+			if player.force.technologies["cargo-pod"].researched then
+				has_researched_cargo_pod = true
+				break
+			end
+		end
+		return
+	end
+
 	if not storage.recycle_cargo_pods then
 		storage.recycle_cargo_pods = {}
+	end
+
+	if not storage.recycle_rocket_boosters then
+		storage.recycle_rocket_boosters = {}
 	end
 
 	local existing_pods = {}
@@ -30,6 +45,13 @@ script.on_nth_tick(60, function()
 			end
 
 			local platform = surface.platform
+			local hub_trash = nil
+			if platform and platform.valid then
+				local hub = platform.hub
+				if hub and hub.valid then
+					hub_trash = hub.get_inventory(defines.inventory.hub_trash)
+				end
+			end
 
 			-- pull my pair
 			local seen_on = storage.recycle_cargo_pods[pod.unit_number]
@@ -42,6 +64,14 @@ script.on_nth_tick(60, function()
 					storage.recycle_cargo_pods[pod.unit_number].arrival_surface_name = surface_name
 					-- if pod.procession_tick > 60 * 12 or pod.procession_tick < 60 * 5.5 then break end
 					--Public.handle_cargo_pod_arriving_on_platform(pod, platform)
+					if hub_trash and hub_trash.valid and not recycle_rocket_boosters[pod.unit_number] then
+						hub_trash.insert({ 
+							name = "recycled-rocket-booster", 
+							lookup_code = pod.unit_number, 
+							count = 1 
+						})	
+						recycle_rocket_boosters[pod.unit_number] = true
+					end
 				else
 					Public.handle_cargo_pod_departing_platform(pod, platform)
 				end
@@ -186,6 +216,21 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	local hub_inventory = hub.get_inventory(defines.inventory.hub_main)
 	if not (hub_inventory and hub_inventory.valid) then
 		return
+	end
+
+	-- Is this actually a rocket return?
+	-- If we didn't find any cargo pods, we should destroy the cargo pod and return the items
+	local pod_inventory = pod.get_inventory(defines.inventory.cargo_wagon)
+	if pod_inventory and pod_inventory.valid then
+		local pod_contents = pod_inventory.get_contents()
+		if pod_contents then
+			for _, item in pairs(pod_contents) do
+				if item.name == "recycled-rocket-booster" then
+					storage.recycle_cargo_pods[pod.unit_number].platform = true
+					return -- success state
+				end
+			end
+		end
 	end
 
 	-- Attempt to find the cargo pod in the hub, and remove it.

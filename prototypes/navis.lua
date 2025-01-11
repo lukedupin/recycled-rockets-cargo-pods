@@ -40,6 +40,7 @@ local nuclearRocketTech = {
 	prerequisites =
 	{
 	  "rocket-silo",
+	  "cargo-pod",
 	  "nuclear-power"
 	},
 	unit =

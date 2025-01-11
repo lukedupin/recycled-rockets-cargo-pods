@@ -40,6 +40,7 @@ local recycledBioRocketTech = {
 	prerequisites =
 	{
 	  "rocket-silo",
+	  "cargo-pod",
 	  "planet-discovery-gleba"
 	},
 	unit =

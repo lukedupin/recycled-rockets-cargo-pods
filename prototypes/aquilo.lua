@@ -38,6 +38,7 @@ local recycledAquiloRocketTech = {
 	prerequisites =
 	{
 	  "rocket-silo",
+	  "cargo-pod",
 	  "planet-discovery-aquilo"
 	},
 	unit =

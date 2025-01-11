@@ -39,6 +39,7 @@ local recycledMagRocketTech = {
 	prerequisites =
 	{
 	  "rocket-silo",
+	  "cargo-pod",
 	  "planet-discovery-fulgora"
 	},
 	unit =

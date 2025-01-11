@@ -41,6 +41,7 @@ local vulcanusRocketTech = {
 	prerequisites =
 	{
 	  "rocket-silo",
+	  "cargo-pod",
 	  "planet-discovery-vulcanus"
 	},
 	unit =
