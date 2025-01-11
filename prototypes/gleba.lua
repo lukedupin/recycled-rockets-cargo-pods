@@ -3,43 +3,44 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 
 
 
--- Magnetic fuel --
+-- Bio fuel --
 
 -- Create the recycled rocket pod
-local recycledMagFuelRecipe = {
+local recycledBioFuelRecipe = {
 	type = "recipe",
-	name = "recycled-mag-fuel",
+	name = "recycled-bio-fuel",
 	energy_required = 40,
 	enabled = false,
-	category = "electromagnetics",
+	category = "organic",
     ingredients =
     {
-	  {type = "item", name = "superconductor", amount = 1},
-      {type = "item", name = 'solid-fuel', amount = 500},
+	  {type = "item", name = "pentapod-egg", amount = 1},
+	  {type = "item", name = "iron-bacteria", amount = 1},
+      {type = "item", name = 'rocket-fuel', amount = 20},
     },
-	results = {{type="item", name="recycled-fuel-pod", amount=50}}
+	results = {{type="item", name="recycled-fuel-pod", amount=20}}
 }
 
 -- Tech --
 
 -- Create the technology for the recycled rocket
-local recycledMagRocketTech = {
+local recycledBioRocketTech = {
 	type = "technology",
 	name = "recycled-mag-rocket-ship",
-	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-tech-fulgora.png",
+	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-tech-gleba.png",
 	icon_size = 256,
 	essential = false,
 	effects =
 	{
 	  {
 		type = "unlock-recipe",
-		recipe = "recycled-mag-fuel"
+		recipe = "recycled-bio-fuel"
 	  }
 	},
 	prerequisites =
 	{
 	  "rocket-silo",
-	  "planet-discovery-fulgora"
+	  "planet-discovery-gleba"
 	},
 	unit =
 	{
@@ -51,7 +52,7 @@ local recycledMagRocketTech = {
 		{"logistic-science-pack", 1},
 		{"chemical-science-pack", 1},
 		{"utility-science-pack", 1},
-	    {"electromagnetic-science-pack", 1},
+	    {"agricultural-science-pack", 1},
 		{"space-science-pack", 1}
 	  },
 	  time = 60
@@ -59,7 +60,7 @@ local recycledMagRocketTech = {
 }
 
 data:extend({
-	recycledMagFuelRecipe,
+	recycledBioFuelRecipe,
 
-	recycledMagRocketTech,
+	recycledBioRocketTech,
 })

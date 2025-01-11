@@ -2,48 +2,47 @@ local space_age_sounds = require("__space-age__.prototypes.entity.sounds")
 local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 
 
-
--- Magnetic fuel --
+-- Aquilo fuel --
 
 -- Create the recycled rocket pod
-local recycledMagFuelRecipe = {
+local recycledAquiloFuelRecipe = {
 	type = "recipe",
-	name = "recycled-mag-fuel",
-	energy_required = 40,
+	name = "recycled-aquilo-fuel",
+	energy_required = 20,
 	enabled = false,
-	category = "electromagnetics",
+	category = "cryogenics",
     ingredients =
     {
-	  {type = "item", name = "superconductor", amount = 1},
-      {type = "item", name = 'solid-fuel', amount = 500},
+	  {type = "item", name = "lithium", amount = 1},
+      {type = "item", name = 'rocket-fuel', amount = 20},
     },
-	results = {{type="item", name="recycled-fuel-pod", amount=50}}
+	results = {{type="item", name="recycled-fuel-pod", amount=20}}
 }
 
 -- Tech --
 
 -- Create the technology for the recycled rocket
-local recycledMagRocketTech = {
+local recycledAquiloRocketTech = {
 	type = "technology",
 	name = "recycled-mag-rocket-ship",
-	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-tech-fulgora.png",
+	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-tech-gleba.png",
 	icon_size = 256,
 	essential = false,
 	effects =
 	{
 	  {
 		type = "unlock-recipe",
-		recipe = "recycled-mag-fuel"
+		recipe = "recycled-aquilo-fuel"
 	  }
 	},
 	prerequisites =
 	{
 	  "rocket-silo",
-	  "planet-discovery-fulgora"
+	  "planet-discovery-aquilo"
 	},
 	unit =
 	{
-	  count = 200,
+	  count = 1000,
 
 	  ingredients =
 	  {
@@ -51,7 +50,6 @@ local recycledMagRocketTech = {
 		{"logistic-science-pack", 1},
 		{"chemical-science-pack", 1},
 		{"utility-science-pack", 1},
-	    {"electromagnetic-science-pack", 1},
 		{"space-science-pack", 1}
 	  },
 	  time = 60
@@ -59,7 +57,7 @@ local recycledMagRocketTech = {
 }
 
 data:extend({
-	recycledMagFuelRecipe,
+	recycledAquiloFuelRecipe,
 
-	recycledMagRocketTech,
+	recycledAquiloRocketTech,
 })
