@@ -26,7 +26,7 @@ local recycledBioFuelRecipe = {
 -- Create the technology for the recycled rocket
 local recycledBioRocketTech = {
 	type = "technology",
-	name = "recycled-mag-rocket-ship",
+	name = "recycled-bio-fuel",
 	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-tech-gleba.png",
 	icon_size = 256,
 	essential = false,
@@ -45,7 +45,7 @@ local recycledBioRocketTech = {
 	},
 	unit =
 	{
-	  count = 200,
+	  count = 500,
 
 	  ingredients =
 	  {
@@ -53,7 +53,6 @@ local recycledBioRocketTech = {
 		{"logistic-science-pack", 1},
 		{"chemical-science-pack", 1},
 		{"utility-science-pack", 1},
-	    {"agricultural-science-pack", 1},
 		{"space-science-pack", 1}
 	  },
 	  time = 60

@@ -7,7 +7,7 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 -- Create the recycled rocket pod
 local recycledAquiloFuelRecipe = {
 	type = "recipe",
-	name = "recycled-aquilo-fuel",
+	name = "recycled-cryo-fuel",
 	energy_required = 20,
 	enabled = false,
 	category = "cryogenics",
@@ -24,15 +24,15 @@ local recycledAquiloFuelRecipe = {
 -- Create the technology for the recycled rocket
 local recycledAquiloRocketTech = {
 	type = "technology",
-	name = "recycled-mag-rocket-ship",
-	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-tech-gleba.png",
+	name = "recycled-cryo-rocket-ship",
+	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-tech-aquilo.png",
 	icon_size = 256,
 	essential = false,
 	effects =
 	{
 	  {
 		type = "unlock-recipe",
-		recipe = "recycled-aquilo-fuel"
+		recipe = "recycled-cryo-fuel"
 	  }
 	},
 	prerequisites =

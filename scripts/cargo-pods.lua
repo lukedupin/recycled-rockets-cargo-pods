@@ -19,10 +19,6 @@ script.on_nth_tick(60, function()
 		storage.recycle_cargo_pods = {}
 	end
 
-	if not storage.recycle_rocket_boosters then
-		storage.recycle_rocket_boosters = {}
-	end
-
 	local existing_pods = {}
 
 	for surface_name, surface in pairs(game.surfaces) do
@@ -39,6 +35,7 @@ script.on_nth_tick(60, function()
 					planet = false, 
 					platform = false, 
 					arriving = false, 
+					booster = false,
 					departure_surface_name = surface_name,
 					arrival_surface_name = nil
 				}
@@ -64,13 +61,12 @@ script.on_nth_tick(60, function()
 					storage.recycle_cargo_pods[pod.unit_number].arrival_surface_name = surface_name
 					-- if pod.procession_tick > 60 * 12 or pod.procession_tick < 60 * 5.5 then break end
 					--Public.handle_cargo_pod_arriving_on_platform(pod, platform)
-					if hub_trash and hub_trash.valid and not recycle_rocket_boosters[pod.unit_number] then
+					if hub_trash and hub_trash.valid and not storage.recycle_cargo_pods[pod.unit_number].booster then
 						hub_trash.insert({ 
 							name = "recycled-rocket-booster", 
-							lookup_code = pod.unit_number, 
 							count = 1 
 						})	
-						recycle_rocket_boosters[pod.unit_number] = true
+						storage.recycle_cargo_pods[pod.unit_number].booster = true
 					end
 				else
 					Public.handle_cargo_pod_departing_platform(pod, platform)
@@ -83,6 +79,7 @@ script.on_nth_tick(60, function()
 					storage.recycle_cargo_pods[pod.unit_number].arrival_surface_name = surface_name
 					--if pod.procession_tick > 60 * 14 or pod.procession_tick < 60 * 5.5 then break end
 					--Public.handle_cargo_pod_arriving_on_planet(pod)
+					--game.print(pod.procession_tick)
 				else
 					Public.handle_cargo_pod_departing_planet(pod)
 				end
@@ -175,6 +172,11 @@ function Public.handle_cargo_pod_arriving_on_planet(unit_number)
 			and surface.planet.valid
 			and surface.planet.name) then
 		--game.print("Planet: No valid planet")
+		return
+	end
+
+	-- Do not add a cargo pod because this is actually a rocket booster coming back
+	if storage.recycle_cargo_pods[unit_number].booster then
 		return
 	end
 

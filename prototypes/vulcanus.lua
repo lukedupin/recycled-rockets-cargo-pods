@@ -54,7 +54,6 @@ local vulcanusRocketTech = {
 		{"logistic-science-pack", 1},
 		{"chemical-science-pack", 1},
 		{"utility-science-pack", 1},
-	    {"metallurgic-science-pack", 1},
 		{"space-science-pack", 1}
 	  },
 	  time = 60

@@ -44,7 +44,7 @@ local recycledMagRocketTech = {
 	},
 	unit =
 	{
-	  count = 200,
+	  count = 400,
 
 	  ingredients =
 	  {
@@ -52,7 +52,6 @@ local recycledMagRocketTech = {
 		{"logistic-science-pack", 1},
 		{"chemical-science-pack", 1},
 		{"utility-science-pack", 1},
-	    {"electromagnetic-science-pack", 1},
 		{"space-science-pack", 1}
 	  },
 	  time = 60
