@@ -58,8 +58,8 @@ local recycledRocketBoosterRecipe = {
 	category = "crafting",
     ingredients =
     {
-      {type = "item", name = 'thruster', amount = 5},
-	  {type = "item", name = "processing-unit", amount = 50},
+      {type = "item", name = 'thruster', amount = 15},
+	  {type = "item", name = "processing-unit", amount = 100},
       {type = "item", name = 'low-density-structure', amount = 100}
     },
 	results = {{type="item", name="recycled-rocket-booster", amount=1}}
@@ -82,20 +82,20 @@ local recycledFuelPodItem = {
 }
 
 -- Create the recycled rocket pod
-local recycledFuelPodRecipe = {
-	type = "recipe",
-	name = "recycled-fuel-pod",
-	energy_required = 30,
-	enabled = false,
-	category = "crafting",
-    ingredients =
-    {
-	  {type = "item", name = "processing-unit", amount = 1},
-      {type = "item", name = 'low-density-structure', amount = 2},
-      {type = "item", name = 'rocket-fuel', amount = 20}
-    },
-	results = {{type="item", name="recycled-fuel-pod", amount=20}}
-}
+--local recycledFuelPodRecipe = {
+	--type = "recipe",
+	--name = "recycled-fuel-pod",
+	--energy_required = 30,
+	--enabled = false,
+	--category = "crafting",
+    --ingredients =
+    --{
+	  --{type = "item", name = "processing-unit", amount = 1},
+      --{type = "item", name = 'low-density-structure', amount = 2},
+      --{type = "item", name = 'rocket-fuel', amount = 20}
+    --},
+	--results = {{type="item", name="recycled-fuel-pod", amount=20}}
+--}
 
 
 
@@ -153,7 +153,7 @@ local rocketRecipe = {
     {
       {type = "item", name = "recycled-cargo-pod", amount = 1},
       {type = "item", name = "recycled-rocket-booster", amount = 1},
-	  {type = "item", name = "recycled-fuel-pod", amount = 100}
+	  {type = "item", name = "rocket-fuel", amount = 100}
     },
 	results = {{type="item", name="rocket-part", amount=1}},
 	allow_productivity = true
@@ -191,10 +191,10 @@ local recycledRocketTech = {
 		type = "unlock-recipe",
 		recipe = "basic-rocket-ship"
 	  },
-	  {
-		type = "unlock-recipe",
-		recipe = "recycled-fuel-pod"
-	  },
+	  --{
+		--type = "unlock-recipe",
+		--recipe = "recycled-fuel-pod"
+	  --},
 	  {
 		type = "unlock-recipe",
 		recipe = "recycled-rocket-booster"
@@ -232,7 +232,7 @@ data.extend({
 	recycledRocketBoosterRecipe,
 
 	recycledFuelPodItem,
-	recycledFuelPodRecipe,
+	--recycledFuelPodRecipe,
 
     rocketRecipe,
     recycledRocketTech

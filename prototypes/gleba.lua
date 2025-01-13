@@ -9,16 +9,15 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local recycledBioFuelRecipe = {
 	type = "recipe",
 	name = "recycled-bio-fuel",
-	energy_required = 40,
+	energy_required = 15,
 	enabled = false,
 	category = "organic",
     ingredients =
     {
 	  {type = "item", name = "pentapod-egg", amount = 1},
-	  {type = "item", name = "iron-bacteria", amount = 1},
-      {type = "item", name = 'rocket-fuel', amount = 20},
+      {type = "item", name = 'rocket-fuel', amount = 10},
     },
-	results = {{type="item", name="recycled-fuel-pod", amount=20}}
+	results = {{type="item", name="recycled-fuel-pod", amount=35}}
 }
 
 -- Tech --
@@ -39,8 +38,7 @@ local recycledBioRocketTech = {
 	},
 	prerequisites =
 	{
-	  "rocket-silo",
-	  "cargo-pod",
+	  "nuclear-rocket-ship",
 	  "planet-discovery-gleba"
 	},
 	unit =

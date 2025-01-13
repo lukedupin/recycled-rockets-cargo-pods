@@ -8,15 +8,15 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local recycledAquiloFuelRecipe = {
 	type = "recipe",
 	name = "recycled-cryo-fuel",
-	energy_required = 20,
+	energy_required = 10,
 	enabled = false,
 	category = "cryogenics",
     ingredients =
     {
-	  {type = "item", name = "lithium", amount = 1},
+	  {type = "item", name = "lithium-plate", amount = 1},
       {type = "item", name = 'rocket-fuel', amount = 20},
     },
-	results = {{type="item", name="recycled-fuel-pod", amount=20}}
+	results = {{type="item", name="recycled-fuel-pod", amount=60}}
 }
 
 -- Tech --
@@ -37,8 +37,7 @@ local recycledAquiloRocketTech = {
 	},
 	prerequisites =
 	{
-	  "rocket-silo",
-	  "cargo-pod",
+	  "nuclear-rocket-ship",
 	  "planet-discovery-aquilo"
 	},
 	unit =
@@ -52,6 +51,9 @@ local recycledAquiloRocketTech = {
 		{"chemical-science-pack", 1},
 		{"utility-science-pack", 1},
 		{"space-science-pack", 1}
+		{"agricultural-science-pack", 1}
+		{"metallurgic-science-pack", 1}
+		{"electronmagnetic-science-pack", 1}
 	  },
 	  time = 60
 	}

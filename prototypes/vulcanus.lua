@@ -9,17 +9,16 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local vulcanusFuelPodRecipe = {
 	type = "recipe",
 	name = "vulcanus-fuel-pod",
-	energy_required = 40,
+	energy_required = 5,
 	enabled = false,
 	category = "metallurgy",
     ingredients =
     {
-	  {type = "item", name = "processing-unit", amount = 1},
-	  {type = "item", name = "tungsten-plate", amount = 10},
-      {type = "item", name = 'calcite', amount = 10},
-      {type = "fluid", name = 'sulfuric-acid', amount = 500}
+	  {type = "item", name = "tungsten-plate", amount = 1},
+      {type = "item", name = 'calcite', amount = 1},
+      {type = "fluid", name = 'sulfuric-acid', amount = 50}
     },
-	results = {{type="item", name="recycled-fuel-pod", amount=50}}
+	results = {{type="item", name="recycled-fuel-pod", amount=5}}
 }
 
 -- Tech --
@@ -40,13 +39,12 @@ local vulcanusRocketTech = {
 	},
 	prerequisites =
 	{
-	  "rocket-silo",
-	  "cargo-pod",
+	  "nuclear-rocket-ship",
 	  "planet-discovery-vulcanus"
 	},
 	unit =
 	{
-	  count = 200,
+	  count = 500,
 
 	  ingredients =
 	  {
