@@ -17,13 +17,13 @@ local advancedSiloItem = {
 	name = "advanced-recycled-rocket-silo",
 	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-re-fulgora.png",
 	subgroup = "space-related",
-	order = "a[rocket-silo]",
+	order = "b[rocket-silo]",
 	inventory_move_sound = space_age_item_sounds.mechanical_large_inventory_move,
 	pick_sound = space_age_item_sounds.mechanical_large_inventory_pickup,
 	drop_sound = space_age_item_sounds.mechanical_large_inventory_move,
 	place_result = "advanced-recycled-rocket-silo",
-	weight = 1 * tons,
-	stack_size = 10
+	weight = 2 * tons,
+	stack_size = 1
 }
 
 -- Recipe for building the new silo
@@ -48,7 +48,7 @@ local advancedRocketSiloRecipe = {
 local advancedRocketRecipe = {
 	type = "recipe",
 	name = "advanced-rocket-ship",
-	energy_required = 60,
+	energy_required = 8,
 	enabled = false,
 	hide_from_player_crafting = true,
 	category = "rocket-building",
@@ -63,11 +63,6 @@ local advancedRocketRecipe = {
 }
 
 
-
-
-
-
-
 -- The Recycled Fuel Pod --
 
 -- Create the recycled rocket pod
@@ -77,11 +72,12 @@ local nuclearFuelPodRecipe = {
 	energy_required = 20,
 	enabled = false,
 	category = "centrifuging",
+	order = "c[rocket-silo]",
     ingredients =
     {
 	  {type = "item", name = "uranium-fuel-cell", amount = 1},
 	  {type = "item", name = "low-density-structure", amount = 5},
-      {type = "item", name = 'rocket-fuel', amount = 10}
+      {type = "item", name = 'rocket-fuel', amount = 20}
     },
 	results = {{type="item", name="recycled-fuel-pod", amount=50}}
 }
@@ -100,6 +96,14 @@ local nuclearRocketTech = {
 	  {
 		type = "unlock-recipe",
 		recipe = "nuclear-fuel-pod"
+	  },
+	  {
+		type = "unlock-recipe",
+		recipe = "advanced-recycled-rocket-silo"
+	  },
+	  {
+		type = "unlock-recipe",
+		recipe = "advanced-rocket-ship"
 	  }
 	},
 	prerequisites =

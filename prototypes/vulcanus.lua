@@ -12,11 +12,19 @@ local vulcanusFuelPodRecipe = {
 	energy_required = 5,
 	enabled = false,
 	category = "metallurgy",
+	order = "c[rocket-silo]",
     ingredients =
     {
 	  {type = "item", name = "tungsten-plate", amount = 1},
       {type = "item", name = 'calcite', amount = 1},
       {type = "fluid", name = 'sulfuric-acid', amount = 50}
+    },
+	surface_conditions = {
+        {
+          max = 4000,
+          min = 4000,
+          property = "pressure"
+        }
     },
 	results = {{type="item", name="recycled-fuel-pod", amount=5}}
 }

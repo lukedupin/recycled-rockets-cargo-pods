@@ -12,10 +12,18 @@ local recycledBioFuelRecipe = {
 	energy_required = 15,
 	enabled = false,
 	category = "organic",
+	order = "c[rocket-silo]",
     ingredients =
     {
 	  {type = "item", name = "pentapod-egg", amount = 1},
       {type = "item", name = 'rocket-fuel', amount = 10},
+    },
+	surface_conditions = {
+        {
+          max = 20,
+          min = 20,
+          property = "gravity"
+        }
     },
 	results = {{type="item", name="recycled-fuel-pod", amount=35}}
 }

@@ -12,10 +12,18 @@ local recycledMagFuelRecipe = {
 	energy_required = 20,
 	enabled = false,
 	category = "electromagnetics",
+	order = "c[rocket-silo]",
     ingredients =
     {
 	  {type = "item", name = "superconductor", amount = 1},
       {type = "item", name = 'solid-fuel', amount = 1000},
+    },
+	surface_conditions = {
+        {
+          max = 99,
+          min = 99,
+          property = "magnetic-field"
+		}
     },
 	results = {{type="item", name="recycled-fuel-pod", amount=50}}
 }

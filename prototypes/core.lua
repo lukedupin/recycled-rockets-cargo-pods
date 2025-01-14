@@ -9,7 +9,7 @@ local recycledCargoPodItem = {
 	name = "recycled-cargo-pod",
 	icon = "__recycled-rockets-cargo-pods__/graphics/cargo-pod.png",
 	subgroup = "space-related",
-	order = "c[rocket-silo]",
+	order = "d[rocket-silo]",
 	inventory_move_sound = space_age_item_sounds.mechanical_large_inventory_move,
 	pick_sound = space_age_item_sounds.mechanical_large_inventory_pickup,
 	drop_sound = space_age_item_sounds.mechanical_large_inventory_move,
@@ -41,7 +41,7 @@ local recycledRocketBoosterItem = {
 	name = "recycled-rocket-booster",
 	icon = "__recycled-rockets-cargo-pods__/graphics/recycled-rocket-booster.png",
 	subgroup = "space-related",
-	order = "b[recycled-cargo-pod]",
+	order = "d[rocket-silo]",
 	inventory_move_sound = space_age_item_sounds.mechanical_large_inventory_move,
 	pick_sound = space_age_item_sounds.mechanical_large_inventory_pickup,
 	drop_sound = space_age_item_sounds.mechanical_large_inventory_move,
@@ -53,7 +53,7 @@ local recycledRocketBoosterItem = {
 local recycledRocketBoosterRecipe = {
 	type = "recipe",
 	name = "recycled-rocket-booster",
-	energy_required = 30,
+	energy_required = 10,
 	enabled = false,
 	category = "crafting",
     ingredients =
@@ -105,21 +105,21 @@ basicSiloPlaced.name = "basic-recycled-rocket-silo"
 basicSiloPlaced.fixed_recipe = "basic-rocket-ship"
 -- basicSiloPlaced.fixed_recipe = "" -- Wish this could work but it allows the original also, which breaks everything
 basicSiloPlaced.rocket_parts_required = 1 -- Needs to be one since the output doesn't honor anything other than 1
-basicSiloPlaced.icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-re-fulgora.png"
+basicSiloPlaced.icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-re-vulcanus.png"
 
 -- Inventory item for the recycled rocket silo
 local basicSiloItem = {
 	type = "item",
 	name = "basic-recycled-rocket-silo",
-	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-re-fulgora.png",
+	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-silo-re-vulcanus.png",
 	subgroup = "space-related",
 	order = "a[rocket-silo]",
 	inventory_move_sound = space_age_item_sounds.mechanical_large_inventory_move,
 	pick_sound = space_age_item_sounds.mechanical_large_inventory_pickup,
 	drop_sound = space_age_item_sounds.mechanical_large_inventory_move,
 	place_result = "basic-recycled-rocket-silo",
-	weight = 1 * tons,
-	stack_size = 10
+	weight = 2 * tons,
+	stack_size = 1
 }
 
 -- Recipe for building the new silo

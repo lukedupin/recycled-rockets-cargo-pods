@@ -66,7 +66,6 @@ script.on_nth_tick(60, function()
 							name = "recycled-rocket-booster", 
 							count = 1 
 						})	
-						storage.recycle_cargo_pods[pod.unit_number].booster = true
 					end
 				else
 					Public.handle_cargo_pod_departing_platform(pod, platform)
@@ -221,7 +220,6 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 	end
 
 	-- Is this actually a rocket return?
-	-- If we didn't find any cargo pods, we should destroy the cargo pod and return the items
 	local pod_inventory = pod.get_inventory(defines.inventory.cargo_wagon)
 	if pod_inventory and pod_inventory.valid then
 		local pod_contents = pod_inventory.get_contents()
@@ -229,6 +227,7 @@ function Public.handle_cargo_pod_departing_platform(pod, platform)
 			for _, item in pairs(pod_contents) do
 				if item.name == "recycled-rocket-booster" then
 					storage.recycle_cargo_pods[pod.unit_number].platform = true
+					storage.recycle_cargo_pods[pod.unit_number].booster = true
 					return -- success state
 				end
 			end
