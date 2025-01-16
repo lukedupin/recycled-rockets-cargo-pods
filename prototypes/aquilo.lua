@@ -24,7 +24,10 @@ local recycledAquiloFuelRecipe = {
           property = "pressure"
         }
       },
-	results = {{type="item", name="recycled-fuel-pod", amount=5}}
+	results = {
+	  {type = "fluid", name = "fluoroketone-hot", amount=5},
+	  {type="item", name="recycled-fuel-pod", amount=5}
+	}
 }
 
 -- Tech --
