@@ -16,6 +16,7 @@ local recycledBioFuelRecipe = {
     ingredients =
     {
 	  {type = "item", name = "pentapod-egg", amount = 1},
+	  {type = "item", name = "iron-bacteria", amount = 1},
       {type = "item", name = 'rocket-fuel', amount = 10},
     },
 	surface_conditions = {

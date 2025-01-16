@@ -9,14 +9,15 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local recycledMagFuelRecipe = {
 	type = "recipe",
 	name = "recycled-mag-fuel",
-	energy_required = 20,
+	energy_required = 26,
 	enabled = false,
 	category = "electromagnetics",
 	order = "c[rocket-silo]",
     ingredients =
     {
 	  {type = "item", name = "superconductor", amount = 1},
-      {type = "item", name = 'solid-fuel', amount = 1000},
+	  {type = "item", name = "iron-plate", amount = 40},
+      {type = "item", name = 'solid-fuel', amount = 350},
     },
 	surface_conditions = {
         {

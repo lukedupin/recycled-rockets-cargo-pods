@@ -62,6 +62,7 @@ script.on_nth_tick(60, function()
 					-- if pod.procession_tick > 60 * 12 or pod.procession_tick < 60 * 5.5 then break end
 					--Public.handle_cargo_pod_arriving_on_platform(pod, platform)
 					if hub_trash and hub_trash.valid and not storage.recycle_cargo_pods[pod.unit_number].booster then
+						storage.recycle_cargo_pods[pod.unit_number].booster = true
 						hub_trash.insert({ 
 							name = "recycled-rocket-booster", 
 							count = 1 

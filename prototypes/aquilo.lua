@@ -14,10 +14,8 @@ local recycledAquiloFuelRecipe = {
 	order = "c[rocket-silo]",
     ingredients =
     {
-	  {type = "fluid", name = "water", amount = 10},
-	  {type = "fluid", name = "ammonia", amount = 5},
-	  {type = "fluid", name = "lithium-brine", amount = 5},
-      {type = "item", name = 'rocket-fuel', amount = 2},
+	  {type = "fluid", name = "fluoroketone-cold", amount = 10},
+      {type = "item", name = 'rocket-fuel', amount = 1},
     },
 	surface_conditions = {
         {
