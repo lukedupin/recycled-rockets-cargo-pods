@@ -9,15 +9,16 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local vulcanusFuelPodRecipe = {
 	type = "recipe",
 	name = "vulcanus-fuel-pod",
-	energy_required = 5,
+	energy_required = 16,
 	enabled = false,
+	hide_from_player_crafting = true,
 	category = "metallurgy",
 	order = "c[rocket-silo]",
     ingredients =
     {
 	  {type = "item", name = "tungsten-plate", amount = 1},
       {type = "item", name = 'calcite', amount = 1},
-      {type = "fluid", name = 'sulfuric-acid', amount = 50}
+      {type = "fluid", name = 'sulfuric-acid', amount = 100}
     },
 	surface_conditions = {
         {

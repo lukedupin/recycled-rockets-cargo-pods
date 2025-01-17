@@ -9,15 +9,16 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local recycledMagFuelRecipe = {
 	type = "recipe",
 	name = "recycled-mag-fuel",
-	energy_required = 26,
+	energy_required = 38,
 	enabled = false,
+	hide_from_player_crafting = true,
 	category = "electromagnetics",
 	order = "c[rocket-silo]",
     ingredients =
     {
 	  {type = "item", name = "superconductor", amount = 1},
-	  {type = "item", name = "iron-plate", amount = 40},
-      {type = "item", name = 'solid-fuel', amount = 350},
+	  {type = "item", name = "iron-plate", amount = 20},
+      {type = "item", name = 'solid-fuel', amount = 180},
     },
 	surface_conditions = {
         {
@@ -26,7 +27,7 @@ local recycledMagFuelRecipe = {
           property = "magnetic-field"
 		}
     },
-	results = {{type="item", name="recycled-fuel-pod", amount=50}}
+	results = {{type="item", name="recycled-fuel-pod", amount=25}}
 }
 
 -- Tech --

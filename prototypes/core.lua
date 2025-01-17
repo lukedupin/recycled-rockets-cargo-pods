@@ -77,7 +77,7 @@ local recycledFuelPodItem = {
 	inventory_move_sound = space_age_item_sounds.mechanical_large_inventory_move,
 	pick_sound = space_age_item_sounds.mechanical_large_inventory_pickup,
 	drop_sound = space_age_item_sounds.mechanical_large_inventory_move,
-	weight = 0.01 * tons,
+	weight = 0.05 * tons,
 	stack_size = 20
 }
 

@@ -8,14 +8,15 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local recycledAquiloFuelRecipe = {
 	type = "recipe",
 	name = "recycled-cryo-fuel",
-	energy_required = 2,
+	energy_required = 3,
 	enabled = false,
+	hide_from_player_crafting = true,
 	category = "cryogenics",
 	order = "c[rocket-silo]",
-    ingredients =
-    {
+	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-fuel.png",
+    ingredients = {
 	  {type = "fluid", name = "fluoroketone-cold", amount = 10},
-      {type = "item", name = 'rocket-fuel', amount = 1},
+      {type = "item", name = 'rocket-fuel', amount = 1}
     },
 	surface_conditions = {
         {
@@ -25,8 +26,8 @@ local recycledAquiloFuelRecipe = {
         }
       },
 	results = {
-	  {type = "fluid", name = "fluoroketone-hot", amount=5},
-	  {type="item", name="recycled-fuel-pod", amount=5}
+	  {type = "fluid", name = "fluoroketone-hot", amount=6},
+	  {type = "item", name = "recycled-fuel-pod", amount=4}
 	}
 }
 
