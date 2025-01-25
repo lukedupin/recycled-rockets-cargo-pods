@@ -4,17 +4,20 @@ https://mods.factorio.com/mod/recycled-rockets-cargo-pods
 
 # What is this?
 
-Adds CargoPods and Recycled Rockets to your factory and 4 new tech. tree unlockables! This mod is created with a desire to make reasonable, logical and balanced changes that increases the immersion of your factory.
+Adds CargoPods and Recycled Rockets to your factory with 2 new silos and specialized advanced rocket fuel themed for each planet. 
+
+# YouTube video walkthrough
+
+https://youtu.be/Umxu7Qk08Hk
 
 # Changes at a glance
 * SpacePlatforms now require CargoPods to drop resources down to planets. Each rocket (even stock) will deposit 1 CargoPod which can be used to drop items back down to the planet.
-* The standard rocket silo still costs the ~same total items (100 blue, 100 frame, 100 fuel). However, now 50 of the blue circuits are allocated to 5 thrusters which are thrown away (not reusable).
-* Vulcans recyclable rocket only require fuel (almost).
-* Fulgora brings Anti-gravity magnetic fuel which drastically reduces the fuel requirements.
-
-# Play your way
-
-If you just want to add CargoPods and keep the standard rockets, no problem. Ignore the recycled rocket tech entries and just research CargoPods. CargoPods are still reusable, even though your launch stage rocket wont be.
+* CargoPods are created as units and reused
+* CargoPods stay with the spaceship they were sent to, until materials are dropped down to the planet.
+* RocketBoosters are created as units and reused
+* RocketBoosters return immediately after launching.
+* BasicRocket fuel can be used
+* Optionally, each planet has its own uniquely themed advanced fuel type.
 
 # Details on CargoPods
 
@@ -32,67 +35,37 @@ If, for example, you have 20 CargoPods, and attempt to drop 20, 1 CargoPod will 
 
 If you drop a CargoPod down to planet that does't have a landing platform, the CargoPod will be destroyed.
 
-# Details on Standard Rocket Silos
+# Details on Rocket booster stages
 
-Rocket Silos will play roughly the same. Keep in mind, existing RocketSilos made before this mod will stay untouched. If you change them in any way, their behavior will be updated to reflect this mod's recipes.
+Rocket boosters are now made outside of the silo. Using 100 processing units, low density structure and 15x thrusters, a booster is created. The booster is loaded into a silo, and then fueled for launch (like in real-life).
 
-Instead of 100x rocket parts, there is now only 1x made per rocket. Creating a rocket now *costs: 1x CargoPod, 5x thrusters, 50x processing units, 100x low density, and 100x rocket fuel.*
-
-If you only want to play like this, basically stock but with CargoPods, everything will work as expected.
-
-# Details on Recycled Rockets
-
-Creates a new rocket silo, the recycled rocket. The cost of this silo represents the 2x rockets you're going to build which will be reused. After an expensive initial investment, the rockets only consume fuel, a cargo pod, and one repair unit.
-
-Recycled Rocket Silos *cost: 1x rocket-silo, 10x thrusters (5x for 2 rockets), 50x processing units, 100x low density and 100x tungsten.* These rockets use the much lighter weight tungsten material, which allows them to be more fuel efficient.
-
-To launch of one these rockets, they require: *1x CargoPod, 1x tungsten plate, 80x rocket fuel (20x less than default).*
-
-# Details on Recycled Mag Rockets
-
-Creates a new and final rocket silo, the eltrocmagnetic anti-gravity silo. The cost of this silo represents the retro-fitting of the recycled rocket. 
-
-Recycled Mag Rockets *Cost: 1x recycled-rocket-silo, 50x holmium plate and 50x superconductors.*
-
-Launching one of these rockets requires: *1x CargoPod, 20x steel plate, 5x recycled-mag-fuel*. These rockets require a feric metal (steel) for the reaction to function.
-
-Magnetic fuel is created exclusively inside Eltrocmagnetic assemblers. There is no requirement for the fuel to be created on Fuglora, but it is easier. The fuel *cost: 1x calcite (start the reaction), 1x superconductor, 42x rocket fuel.* 
-
-The fuel has the odd property of being very light, 100x Mag fuel only weighs 1Ton. This makes it an ideal candidate for shipping the fuel from Fulgora to all of your other factories.
-
-# Details on Recycled Mag Heavy Oil Fuel
-
-Creates a new recipe for creating MagFuel which is very easy to do on Fuglora, and unreasonable anywhere else.
-
-The updated *cost: 1x calcite, 1x holmium plate, 1x copper plate, 2048x heavy-oil, 10x water.*
-
-The resulting fuel is identical. This roughly combines all the sub items into their raw components, in a way that is very convenient for people with an ocean of oil next to them.
+Rocket boosters return after launching a payload immediately after encountering their target space platform. The rocket boosters uses its remaining fuel to land at your space port, at which point you collect it, and reload it into the silo.
 
 # Tech Tree
 
-### CargoPods
+### Basic recycled rockets
 
-*Cost: 200x3 automation, logistics and chemical science.*
+Gives you access to the Basic rocket silo, cargo pods and rocket boosters. The basic rocket silo creates launch ready rockets by using 100x rocket fuel, 1 cargo pod and 1 rocket booster. When this is researched, you will need to have cargo pods in your spaceship to drop resources down to the planet.
 
-CargoPods are a standalone tech. This is implemented this way since many bases will already have silos researched. Compatible with existing bases.
+### Nuclear Advanced rocket fuel for Navis
 
-### Recycled Rockets
+Using nuclear fuel, 40x rocket fuel and a few low density structures to create a nuclear rocket which super heats the fuel, throwing out the propellant at a massively high rate of speed.
 
-*Cost: 1000x automation, logistics, chemical science, utility, space and metallurgic.*
+### Steam Calcite Tungsten Advanced rocket fuel for Vulcanus
 
-Unlocked when you land on Vulcanus. This adds a new rocket silo, and recyclable rockets.
+Using Steam, Calcite and Tungsten foam to create a steam expansion reaction, throwing the tungsten bits out at a high rate of speed. The values for this fuel mirrors the steam expansion requirements.
 
-### Recycled Mag Rockets
+### Electromagnetic Advanced rocket fuel for Fulgora
 
-*Cost: 1000x automation, logistics, chemical science, utility, space and  eltromagnetic.*
+Leveraging Fulgora's heavy oil oceans to make solid fuel combined with superconductors and iron, a rail gun like system is created to launch rockets.
 
-Unlocked when you land on Fulgora and have unlocked MK1 recycled rockets. This adds a new fuel type that can only be created in an Electromagnetic plant. The fuel is light (anti gravity), easy to send to other planets, but a bit resource intensive. This fuel could reasonable be created on any planet.
+### Biological Advanced rocket fuel for Gleba
 
-### Recycled Mag Heavy Oil Rocket Fuel
+Leveraging the insane energy potentials from pentapod eggs and some rocket fuel, a biologically based rocket fuel is created.
 
-*Cost: 500x automation, logistics, chemical science, utility, space and  eltromagnetic.*
+### Fusion Advanced rocket fuel for Aquilo
 
-Enable a new recipe for mag fuel. Its much easier to make on Fulgora, but unrealistic to create anywhere without heavy oil oceans.
+Taking some rocket fuel, and hot/cold fluoroketone's you create fusion based fuel that is highly efficient and easier to create on Auilo.
 
 # Made with love (The why)
 
@@ -101,3 +74,9 @@ Factorio is an amazing game and I love space age. I found that I wanted to have 
 I wanted to have a bit more realism around "Where are these pods coming from?" I also didn't like the idea of creating a iron/ice SpacePlatform that could drop infinite resources from space. This small change of making CargoPods a reusable, easy to create but finite item to manage filled a mental gap for me.
 
 If anyone wants to help out with art, find bugs, make the user experience better, please do. This mod is for the community.
+
+# What could be better
+
+Art work for the rocket silos.
+
+I don't like the implementation of the rocket booster return. If you care to have details, ask me, but if someone wants to make a better rocket booster return stage experience, I'd love the pull request.
