@@ -12,7 +12,7 @@ local recycledAquiloFuelRecipe = {
 	enabled = false,
 	hide_from_player_crafting = true,
 	category = "cryogenics",
-	order = "c[rocket-silo]",
+	order = "b[rocket-silo]",
 	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-fuel.png",
     ingredients = {
 	  {type = "fluid", name = "fluoroketone-cold", amount = 10},
