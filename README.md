@@ -47,26 +47,6 @@ Rocket boosters return after launching a payload immediately after encountering 
 
 Gives you access to the Basic rocket silo, cargo pods and rocket boosters. The basic rocket silo creates launch ready rockets by using 100x rocket fuel, 1 cargo pod and 1 rocket booster. When this is researched, you will need to have cargo pods in your spaceship to drop resources down to the planet.
 
-### Nuclear Advanced rocket fuel for Navis
-
-Using nuclear fuel, 40x rocket fuel and a few low density structures to create a nuclear rocket which super heats the fuel, throwing out the propellant at a massively high rate of speed.
-
-### Steam Calcite Tungsten Advanced rocket fuel for Vulcanus
-
-Using Steam, Calcite and Tungsten foam to create a steam expansion reaction, throwing the tungsten bits out at a high rate of speed. The values for this fuel mirrors the steam expansion requirements.
-
-### Electromagnetic Advanced rocket fuel for Fulgora
-
-Leveraging Fulgora's heavy oil oceans to make solid fuel combined with superconductors and iron, a rail gun like system is created to launch rockets.
-
-### Biological Advanced rocket fuel for Gleba
-
-Leveraging the insane energy potentials from pentapod eggs and some rocket fuel, a biologically based rocket fuel is created.
-
-### Fusion Advanced rocket fuel for Aquilo
-
-Taking some rocket fuel, and hot/cold fluoroketone's you create fusion based fuel that is highly efficient and easier to create on Auilo.
-
 # Made with love (The why)
 
 Factorio is an amazing game and I love space age. I found that I wanted to have a bit more stream-lining for my rocket logistic network. Thus the recyclable rockets.

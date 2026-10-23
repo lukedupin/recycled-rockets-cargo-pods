@@ -65,40 +65,6 @@ local recycledRocketBoosterRecipe = {
 	results = {{type="item", name="recycled-rocket-booster", amount=1}}
 }
 
--- The Recycled Fuel Pod --
-
--- RecycledFuelPod item
-local recycledFuelPodItem = {
-	type = "item",
-	name = "recycled-fuel-pod",
-	icon = "__recycled-rockets-cargo-pods__/graphics/rocket-fuel.png",
-	subgroup = "space-related",
-	order = "b[recycled-cargo-pod]",
-	inventory_move_sound = space_age_item_sounds.mechanical_large_inventory_move,
-	pick_sound = space_age_item_sounds.mechanical_large_inventory_pickup,
-	drop_sound = space_age_item_sounds.mechanical_large_inventory_move,
-	weight = 0.05 * tons,
-	stack_size = 20
-}
-
--- Create the recycled rocket pod
---local recycledFuelPodRecipe = {
-	--type = "recipe",
-	--name = "recycled-fuel-pod",
-	--energy_required = 30,
-	--enabled = false,
-	--category = "crafting",
-    --ingredients =
-    --{
-	  --{type = "item", name = "processing-unit", amount = 1},
-      --{type = "item", name = 'low-density-structure', amount = 2},
-      --{type = "item", name = 'rocket-fuel', amount = 20}
-    --},
-	--results = {{type="item", name="recycled-fuel-pod", amount=20}}
---}
-
-
-
 -- The basic recyclable rocket silo
 local basicSiloPlaced = table.deepcopy(data.raw["rocket-silo"]["rocket-silo"])
 basicSiloPlaced.name = "basic-recycled-rocket-silo"
@@ -153,7 +119,7 @@ local rocketRecipe = {
     {
       {type = "item", name = "recycled-cargo-pod", amount = 1},
       {type = "item", name = "recycled-rocket-booster", amount = 1},
-	  {type = "item", name = "rocket-fuel", amount = 100}
+	  {type = "item", name = "rocket-fuel", amount = settings.startup["recycled-rockets-fuel-amount"].value}
     },
 	results = {{type="item", name="rocket-part", amount=1}},
 	allow_productivity = true
@@ -191,10 +157,6 @@ local recycledRocketTech = {
 		type = "unlock-recipe",
 		recipe = "basic-rocket-ship"
 	  },
-	  --{
-		--type = "unlock-recipe",
-		--recipe = "recycled-fuel-pod"
-	  --},
 	  {
 		type = "unlock-recipe",
 		recipe = "recycled-rocket-booster"
@@ -230,9 +192,6 @@ data.extend({
 
 	recycledRocketBoosterItem,
 	recycledRocketBoosterRecipe,
-
-	recycledFuelPodItem,
-	--recycledFuelPodRecipe,
 
     rocketRecipe,
     recycledRocketTech

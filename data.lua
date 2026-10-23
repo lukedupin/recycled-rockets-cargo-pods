@@ -1,6 +1,1 @@
 require("prototypes.core")
-require("prototypes.navis")
-require("prototypes.vulcanus")
-require("prototypes.fulgora")
-require("prototypes.gleba")
-require("prototypes.aquilo")

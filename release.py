@@ -8,7 +8,7 @@ with open('info.json', 'r') as handle:
     version = info['version']
 
 cmd = f'''cd ..
-zip -r ~/.factorio/mods/{name}_{version}.zip {name} -x '*.git*'
+zip -r ~/.factorio/mods/{name}_{version}.zip {name} -x '*.git' -x '*.py'
 '''
 
 # Run this command
