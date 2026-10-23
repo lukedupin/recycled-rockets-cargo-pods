@@ -23,7 +23,7 @@ local recycledCargoPodRecipe = {
 	name = "recycled-cargo-pod",
 	energy_required = 10,
 	enabled = false,
-	category = "crafting",
+	categories = {"crafting"},
     ingredients =
     {
 	  {type = "item", name = "processing-unit", amount = 5},
@@ -55,7 +55,7 @@ local recycledRocketBoosterRecipe = {
 	name = "recycled-rocket-booster",
 	energy_required = 10,
 	enabled = false,
-	category = "crafting",
+	categories = {"crafting"},
     ingredients =
     {
       {type = "item", name = 'thruster', amount = 15},
@@ -114,7 +114,7 @@ local rocketRecipe = {
 	energy_required = 25,
 	enabled = false,
 	hide_from_player_crafting = true,
-	category = "rocket-building",
+	categories = {"rocket-building"},
     ingredients =
     {
       {type = "item", name = "recycled-cargo-pod", amount = 1},
